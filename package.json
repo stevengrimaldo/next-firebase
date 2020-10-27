@@ -1,0 +1,48 @@
+{
+	"author": "Steven Grimaldo",
+	"name": "next-firebase",
+	"license": "UNLICENSED",
+	"private": true,
+	"husky": {
+		"hooks": {
+			"pre-commit": "yarn lint",
+			"pre-push": "yarn lint"
+		}
+	},
+	"devDependencies": {
+		"babel-eslint": "^10.1.0",
+		"babel-plugin-add-module-exports": "^1.0.4",
+		"babel-plugin-styled-components": "^1.11.1",
+		"eslint": "^7.11.0",
+		"eslint-config-prettier": "^6.13.0",
+		"eslint-import-resolver-alias": "^1.1.2",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-prettier": "^3.1.4",
+		"eslint-plugin-react": "^7.21.4",
+		"eslint-plugin-react-hooks": "^4.1.2",
+		"eslint-watch": "^7.0.0",
+		"husky": "^4.3.0",
+		"prettier": "^2.1.2",
+		"prettier-eslint": "^11.0.0"
+	},
+	"scripts": {
+		"install:client": "cd client && yarn",
+		"install:functions": "cd functions && yarn",
+		"install:all": "npm run install:client && npm run install:functions",
+		"postinstall": "npm run install:all",
+		"prebuild": "npm run clear",
+		"build": "npm run build -C client",
+		"clean:client": "cd client && rm -rf node_modules",
+		"clean:functions": "cd functions && rm -rf node_modules",
+		"clean:all": "npm run clean:client && npm run clean:functions",
+		"clean": "rm -rf node_modules && npm run clean:all",
+		"clear": "rm -rf client/out && rm -rf client/.next && rm -rf functions/.next",
+		"predeploy": "npm run build",
+		"deploy": "firebase deploy",
+		"postdeploy": "npm run clean",
+		"start": "npm run dev -C client",
+		"preserve": "npm run build",
+		"serve": "npm run serve -C functions",
+		"lint": "esw -f stylish --color client"
+	}
+}

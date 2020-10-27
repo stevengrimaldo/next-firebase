@@ -1,0 +1,10 @@
+client/node_modules
+client/.next
+client/out
+client/public
+client/yarn.lock
+yarn.lock
+functions/node_modules
+functions/yarn.lock
+functions/.next
+node_modules

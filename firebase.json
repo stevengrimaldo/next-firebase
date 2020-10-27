@@ -1,0 +1,35 @@
+{
+	"firestore": {
+		"rules": "rules/firestore.rules"
+	},
+	"storage": {
+		"rules": "rules/storage.rules"
+	},
+	"hosting": {
+		"public": "client/out",
+		"cleanUrls": true,
+		"trailingSlash": false,
+		"ignore": [
+			"firebase.json",
+			"**/.*",
+			"**/node_modules/**"
+		],
+		"rewrites": [
+			{
+				"source": "**",
+				"function": "next"
+			}
+		]
+	},
+	"headers": [
+			{
+				"source": "**",
+				"headers": [
+					{
+						"key": "Cache-Control",
+						"value": "public, max-age=86400, s-maxage=86400"
+					}
+				]
+			}
+		]
+}
